@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.google.xr.cardboard": "file:C:/Users/Álvaro Escribano/Desktop/PROYECTO DE VR/planetarium-vr/cardboard-xr-plugin-1.22.0/cardboard-xr-plugin-1.22.0",
+    "com.google.xr.cardboard": "file:../cardboard-xr-plugin-1.22.0/cardboard-xr-plugin-1.22.0",
     "com.unity.collab-proxy": "2.0.7",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
