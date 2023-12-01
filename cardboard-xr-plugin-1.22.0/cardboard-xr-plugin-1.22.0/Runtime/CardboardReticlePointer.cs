@@ -176,6 +176,12 @@ public class CardboardReticlePointer : MonoBehaviour
         }
 
         UpdateDiameters();
+        if(Input.GetButtonDown("A")){
+            print("he tocado");
+        }
+        if(Input.GetButtonUp("A")){
+            print("he soltado");
+        }
     }
 
     /// <summary>
