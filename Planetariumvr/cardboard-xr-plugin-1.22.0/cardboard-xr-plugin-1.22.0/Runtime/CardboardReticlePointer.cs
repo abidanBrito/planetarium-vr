@@ -79,7 +79,7 @@ public class CardboardReticlePointer : MonoBehaviour
     /// <summary>
     /// Maximum distance between the camera and the reticle (in meters).
     /// </summary>
-    private const float _RETICLE_MAX_DISTANCE = 20.0f;
+    private const float _RETICLE_MAX_DISTANCE = 50.0f;
 
     /// <summary>
     /// Number of segments making the reticle circle.
@@ -168,11 +168,12 @@ public class CardboardReticlePointer : MonoBehaviour
             _gazedAtObject = null;
             ResetParams();
         }
-
+        Debug.Log("hit " + hit.point);
         // Checks for screen touches.
-        if (Input.GetButton("A"))
+        if (Input.GetButton("A") || Input.GetKeyDown(KeyCode.Space))
         {
-            _gazedAtObject?.SendMessage("OnPointerClick");
+            Debug.Log("Desplazamiento");
+            _gazedAtObject?.SendMessage("OnPointerClick", hit.point);
         }
 
         UpdateDiameters();

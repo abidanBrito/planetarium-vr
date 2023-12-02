@@ -101,7 +101,7 @@ public class ObjectController : MonoBehaviour
     /// This method is called by the Main Camera when it is gazing at this GameObject and the screen
     /// is touched.
     /// </summary>
-    public void OnPointerClick()
+    public void OnPointerClick(Vector3 v)
     {
         TeleportRandomly();
     }
