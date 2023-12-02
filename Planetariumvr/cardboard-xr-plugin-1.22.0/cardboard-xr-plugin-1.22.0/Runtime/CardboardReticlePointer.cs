@@ -147,7 +147,7 @@ public class CardboardReticlePointer : MonoBehaviour
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _RETICLE_MAX_DISTANCE))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _RETICLE_MAX_DISTANCE, ReticleInteractionLayerMask))
         {
             // GameObject detected in front of the camera.
             if (_gazedAtObject != hit.transform.gameObject)
