@@ -126,6 +126,11 @@ public class CardboardReticlePointer : MonoBehaviour
     /// </summary>
     private float _reticleOuterDiameter;
 
+
+    public float velocidadEscalado = 0.2f;
+
+    private GameObject objetoSeleccionado = null;
+
     /// <summary>
     /// Start is called before the first frame update.
     /// </summary>
@@ -176,14 +181,78 @@ public class CardboardReticlePointer : MonoBehaviour
             _gazedAtObject?.SendMessage("OnPointerClick", hit.point);
         }
 
+        if (Input.GetButtonDown("C"))
+    {
+        if (_gazedAtObject != null)
+        {
+            objetoSeleccionado = _gazedAtObject;
+        }
+    }
+
+        if (Input.GetButton("C") && objetoSeleccionado != null)
+        {
+            Mover(objetoSeleccionado);
+
+            if (Input.GetButtonDown("D"))
+            {
+                EscalarObjeto(1);
+            }
+
+            if (Input.GetButtonDown("B"))
+            {
+                EscalarObjeto(-1);
+            }
+        }
+
+        if (Input.GetButtonUp("C"))
+        {
+            objetoSeleccionado = null;
+        }
+
+
         UpdateDiameters();
-        if(Input.GetButtonDown("A")){
+        if(Input.GetButtonDown("C")){
             print("he tocado");
         }
-        if(Input.GetButtonUp("A")){
+        if(Input.GetButtonUp("C")){
             print("he soltado");
         }
     }
+
+    private void Mover(GameObject objetoEnLaMira)
+{
+    objetoEnLaMira.transform.Translate(new Vector3(Input.GetAxis("Horizontal") * 0.01f, 0, Input.GetAxis("Vertical") * 0.01f));
+}
+
+
+    private void EscalarObjeto(int direccion)
+{
+    print("EscalarObjeto");
+    print(velocidadEscalado);
+
+    // Verifica si el objeto está siendo mirado
+    if (_gazedAtObject != null)
+    {
+        // Obtén la escala actual del objeto
+        Vector3 escalaActual = _gazedAtObject.transform.localScale;
+
+        // Ajusta la escala en la dirección especificada (1 para hacer más grande, -1 para hacer más pequeño)
+        escalaActual += new Vector3(direccion, direccion, direccion) * velocidadEscalado;
+
+        // Asigna la nueva escala al objeto
+        _gazedAtObject.transform.localScale = escalaActual;
+    }
+    else
+    {
+        // Puedes agregar un mensaje para indicar que el objeto no está siendo mirado en este momento
+        print("Objeto no está siendo mirado en este momento");
+    }
+}
+
+
+
+
+
 
     /// <summary>
     /// Updates the material based on the reticle properties.
