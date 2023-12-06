@@ -14,7 +14,10 @@ public class TrailerBtnAction : MonoBehaviour
     public Sprite imageDefault;
     public GameObject canvas;
 
-    public void OnPointerEnter() 
+
+ 
+
+    public void OnPointerEnter()
     {
         button.GetComponent<Image>().sprite = imageHover;
         /* = button.GetComponent<Image>().color;
@@ -22,7 +25,7 @@ public class TrailerBtnAction : MonoBehaviour
         button.GetComponent<Image>().color = currentColor;*/
     }
 
-    public void OnPointerExit() 
+    public void OnPointerExit()
     {
         button.GetComponent<Image>().sprite = imageDefault;
     }
@@ -32,10 +35,17 @@ public class TrailerBtnAction : MonoBehaviour
         myEventClick.Invoke();
     }
 
-    public void changeToTrailerScene(){
-        if(SceneManager.GetActiveScene().name != "Trailer360"){
+
+
+
+    public void changeToTrailerScene()
+    {
+        if (SceneManager.GetActiveScene().name != "Trailer360")
+        {
             SceneManager.LoadScene("Trailer360");
-        } else {
+        }
+        else
+        {
             canvas.SetActive(false);
         }
     }

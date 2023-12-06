@@ -14,6 +14,11 @@ public class ToggleMenu : MonoBehaviour
             ToggleMenuVisibility();
         }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ToggleMenuVisibility();
+        }
+
         if (!canvas.activeSelf)
         {
             gameObject.transform.position = menuMagnet.transform.position;
