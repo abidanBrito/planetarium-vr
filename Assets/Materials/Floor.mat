@@ -25,11 +25,11 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _BorderFalloff: 0.101
-    - _BorderWidth: 0.005
-    - _CellNumber: 1
+    - _BorderFalloff: 0.045
+    - _BorderWidth: 0.095
+    - _CellNumber: 5
     - _RotationFactor: 0
     m_Colors:
-    - _CellColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _CellColor: {r: 1, g: 0.47387886, b: 0, a: 1}
     - _GridLineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
