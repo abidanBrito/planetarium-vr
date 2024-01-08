@@ -7,15 +7,19 @@ using Valve.VR.InteractionSystem;
 
 public class ManageEvents : MonoBehaviour
 {
+    public SteamVR_Action_Boolean activaLaser;
+
     void Awake()
     {
         this.GetComponent<SteamVR_LaserPointer>().PointerClick += PointerClick;
         this.GetComponent<SteamVR_LaserPointer>().PointerIn += PointerInside;
         this.GetComponent<SteamVR_LaserPointer>().PointerOut += PointerOutside;
+        this.GetComponent<SteamVR_LaserPointer>().enabled = false;
+
     }
 
     public void PointerClick(object sender, PointerEventArgs e)
-    {   
+    {
         UIElement uie = e.target.GetComponent<UIElement>();
         if (uie != null)
         {
@@ -40,4 +44,20 @@ public class ManageEvents : MonoBehaviour
             ihe.onHandHoverEnd.Invoke();
         }
     }
+
+    private void Update()
+    {
+        if (activaLaser[this.GetComponent<Hand>().handType].stateDown)
+        {
+            this.GetComponent<SteamVR_LaserPointer>().enabled =
+            !this.GetComponent<SteamVR_LaserPointer>().enabled;
+            GameObject go = this.GetComponent<SteamVR_LaserPointer>().holder;
+            if (go != null)
+            {
+                go.SetActive(this.GetComponent<SteamVR_LaserPointer>().enabled);
+            }
+        }
+    }
+
+
 }
